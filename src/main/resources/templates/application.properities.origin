@@ -1,0 +1,9 @@
+# Data source
+spring.datasource.driverClassName=
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+
+# Hibernate config
+spring.jpa.properities.hibernate.dialect=
+spring.jpa.properities.hibernate.show_sql=
