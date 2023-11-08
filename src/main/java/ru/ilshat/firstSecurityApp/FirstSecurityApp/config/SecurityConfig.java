@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -32,7 +33,10 @@ public class SecurityConfig extends WebSecurityConfiguration{
 	            .loginPage("/auth/login")
 	            .loginProcessingUrl("/process_login")
 	            .defaultSuccessUrl("/hello", true)
-	            .failureUrl("/auth/login?error"));
+	            .failureUrl("/auth/login?error"))
+		.logout(logout -> logout
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/auth/login"));
 	}
 
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
