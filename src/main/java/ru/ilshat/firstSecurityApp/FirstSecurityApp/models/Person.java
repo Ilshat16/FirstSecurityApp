@@ -3,6 +3,7 @@ package ru.ilshat.firstSecurityApp.FirstSecurityApp.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -20,7 +21,7 @@ public class Person {
 	private String username;
 	
 	@Column(name = "year_of_birth")
-	@NotEmpty(message = "Год рождения не должно быть пустым")
+	@NotNull(message = "Год рождения не должно быть пустым")
 	@Min(value = 1900, message = "Год рождения должен быть больше чем 1900")
 	private int yearOfBirth;
 	
