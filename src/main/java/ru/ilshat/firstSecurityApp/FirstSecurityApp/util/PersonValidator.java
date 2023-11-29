@@ -1,6 +1,5 @@
 package ru.ilshat.firstSecurityApp.FirstSecurityApp.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -14,7 +13,6 @@ public class PersonValidator implements Validator{
 	
 	private final PersonDetailsService personDetailsService;
 	
-	@Autowired
 	public PersonValidator(PersonDetailsService personDetailsService) {
 		this.personDetailsService = personDetailsService;
 	}

@@ -1,16 +1,10 @@
 package ru.ilshat.firstSecurityApp.FirstSecurityApp.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -21,13 +15,12 @@ public class SecurityConfig {
 	
 	private final PersonDetailsService personDetailsService;
 	
-	@Autowired
 	public SecurityConfig(PersonDetailsService personDetailsService) {
 		this.personDetailsService = personDetailsService;
 	}
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.authorizeHttpRequests(authorize -> authorize
 	            .requestMatchers("/hello").authenticated()
@@ -43,9 +36,9 @@ public class SecurityConfig {
 		
 		return http.build();
 	}
-	
-	 @Bean
-	 public DaoAuthenticationProvider authenticationProvider() {
+
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
 	      DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 	       
 	      authProvider.setUserDetailsService(personDetailsService);
@@ -53,9 +46,9 @@ public class SecurityConfig {
 	   
 	      return authProvider;
 	  }
-	
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 }

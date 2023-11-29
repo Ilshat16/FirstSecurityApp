@@ -1,6 +1,5 @@
 package ru.ilshat.firstSecurityApp.FirstSecurityApp.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +19,6 @@ public class AuthController {
 	private final RegistrationService registrationService;
 	private final PersonValidator personValidator;
 	
-	@Autowired
 	public AuthController(PersonValidator personValidator, RegistrationService registrationService) {
 		this.personValidator = personValidator;
 		this.registrationService = registrationService;
